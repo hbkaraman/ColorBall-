@@ -4,16 +4,32 @@ using UnityEngine;
 
 public class LocalTileManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Awake()
+    [SerializeField] List<DynamicObject> childrenObject;
+    void Start()
     {
-        int message = transform.childCount;
-        Debug.Log(message: message);
+        int childrenCount = transform.childCount;
+
+        for (int i = 0; i < childrenCount; i++)
+        {
+            DynamicObject child = transform.GetChild(i).GetComponent<DynamicObject>();
+            childrenObject.Add(child);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            resetPrefab();
+        }
+    }
+
+
+    public void resetPrefab()
+    {
+        for(int i=0; i<childrenObject.Count; i++)
+        {
+            childrenObject[i].reset();
+        }
     }
 }

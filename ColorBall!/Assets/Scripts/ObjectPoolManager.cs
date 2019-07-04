@@ -42,12 +42,16 @@ public class ObjectPoolManager : MonoSingleton<ObjectPoolManager>
         }
     }
 
+
     public GameObject spawnObject(int objectType, Vector3 position)
     {
         if (!poolDictionary.ContainsKey(objectType))
             return null;
 
         GameObject objects = poolDictionary[objectType].Dequeue();
+        LocalTileManager localTileManager = objects.GetComponent<LocalTileManager>();
+
+        localTileManager.resetPrefab();
 
         objects.transform.position = position;
         objects.SetActive(true);
