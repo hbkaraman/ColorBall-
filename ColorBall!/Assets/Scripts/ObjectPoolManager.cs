@@ -21,6 +21,7 @@ public class ObjectPoolManager : MonoSingleton<ObjectPoolManager>
     Dictionary<int, Queue<GameObject>> poolDictionary;
     #endregion
 
+    #region Functions
     public void Awake()
     {
         poolDictionary = new Dictionary<int, Queue<GameObject>>();
@@ -56,5 +57,5 @@ public class ObjectPoolManager : MonoSingleton<ObjectPoolManager>
         return objects;
 
     }
-
+    #endregion
 }
