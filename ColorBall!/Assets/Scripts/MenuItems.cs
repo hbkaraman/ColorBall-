@@ -17,8 +17,7 @@ public class MenuItems : MonoSingleton<MenuItems>
     [MenuItem("Color Ball Menu/Level Up")]
     private static void LevelUp()
     {
-        int level = stageManager.getLevel();
-        stageManager.setLevel(++level);
+        stageManager.levelUp();
     }
 
     [MenuItem("Color Ball Menu/Reset Level")]

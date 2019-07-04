@@ -22,6 +22,12 @@ public class ObjectManager : MonoSingleton<ObjectManager>
         nextPosition = stepVector;
     }
 
+    public void closeObjects()
+    {
+        nextPosition = stepVector;
+        objectPoolManager.closeObjects();
+    }
+
     public void spawnObjects(int numberOfObjects)
     {
         for (int i = 0; i < numberOfObjects; i++)

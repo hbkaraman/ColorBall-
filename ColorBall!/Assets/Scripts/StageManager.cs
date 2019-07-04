@@ -28,7 +28,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         currentLevel = level;
 
-        int length = currentLevel * 5;
+        int length = currentLevel + 5;
 
         objectManager.spawnObjects(length);
     }
@@ -46,9 +46,10 @@ public class StageManager : MonoSingleton<StageManager>
         }
     }
 
-    public void levelUp(Vector3 position)
+    public void levelUp()
     {
-
+        objectManager.closeObjects();
+        setLevel(++currentLevel);
     }
 
     #endregion

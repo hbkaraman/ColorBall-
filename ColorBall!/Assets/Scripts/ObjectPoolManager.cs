@@ -42,6 +42,19 @@ public class ObjectPoolManager : MonoSingleton<ObjectPoolManager>
         }
     }
 
+    public void closeObjects()
+    {
+        for (int i = 0; i < poolDictionary.Count; i++)
+        {
+            for (int j = 0; j < poolDictionary[i].Count; j++)
+            {
+                GameObject objects = poolDictionary[i].Dequeue();
+                objects.SetActive(false);
+                poolDictionary[i].Enqueue(objects);
+            }
+        }
+    }
+
 
     public GameObject spawnObject(int objectType, Vector3 position)
     {
