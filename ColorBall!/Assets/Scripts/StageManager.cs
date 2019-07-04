@@ -33,6 +33,19 @@ public class StageManager : MonoSingleton<StageManager>
         objectManager.spawnObjects(length);
     }
 
+    public int getLevel()
+    {
+        return currentLevel;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            setLevel(++currentLevel);
+        }
+    }
+
     public void levelUp(Vector3 position)
     {
 

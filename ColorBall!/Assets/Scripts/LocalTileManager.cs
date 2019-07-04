@@ -16,14 +16,6 @@ public class LocalTileManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            resetPrefab();
-        }
-    }
-
 
     public void resetPrefab()
     {

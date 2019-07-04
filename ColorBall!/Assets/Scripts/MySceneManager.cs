@@ -1,19 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MySceneManager : MonoBehaviour
+public class MySceneManager : MonoSingleton<MySceneManager>
 {
 
-    private void Start()
+    public void resetScene()
     {
-
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Emirhan's Scene");
-        }
+        SceneManager.LoadScene("Emirhan's Scene");
     }
 }
