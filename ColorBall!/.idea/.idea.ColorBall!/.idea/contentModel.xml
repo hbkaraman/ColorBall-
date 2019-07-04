@@ -41,6 +41,9 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="doubletap.cs" t="Include" />
+          <e p="DynamicObject.cs" t="Include" />
+          <e p="LocalTileManager.cs" t="Include" />
+          <e p="MenuItems.cs" t="Include" />
           <e p="MonoSingleton.cs" t="Include" />
           <e p="MySceneManager.cs" t="Include" />
           <e p="ObjectManager.cs" t="Include" />

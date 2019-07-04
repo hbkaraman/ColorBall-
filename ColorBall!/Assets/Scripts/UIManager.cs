@@ -5,19 +5,30 @@ using UnityEngine;
 public class UIManager : MonoSingleton<UIManager>
 {
     [Header("GamePlay Panel")] 
-    public GameObject gamePlayPanel;
+    public GameObject levelStartPanel;
+    
+    [Header("GamePlay Panel")] 
+    public GameObject levelPlayPanel;
     
     [Header("LevelCompleted Panel")] 
     public GameObject levelCompletePanel;
 
+   /* public void ShowLevelStartPanel()
+    {
+        levelStartPanel.SetActive(true);
+    }
+    
+    public void ShowLevelStartPanel()
+    {
+        levelStartPanel.SetActive(true);
+    }*/
     public void ShowGamePlayPanel()
     {
-        gamePlayPanel.SetActive(true);
+        levelPlayPanel.SetActive(true);
     }
-
     public void HideGamePlayPanel()
     {
-        gamePlayPanel.SetActive(false);
+        levelPlayPanel.SetActive(false);
     }
     public void ShowLevelCompletePanel()
     {

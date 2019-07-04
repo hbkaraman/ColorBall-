@@ -11,10 +11,12 @@ public class ParticleManager : MonoSingleton<ParticleManager>
         LevelEndEffect = ParticlePooler.SharedInstance.GetPooledObject(0);
     }
 
-    public void LevelEndEffects()
+    public IEnumerator LevelEndEffects()
     {
         LevelEndEffect.transform.position = Player.Instance.transform.position;
         LevelEndEffect.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        LevelEndEffect.SetActive(false);
     }
    
 }
