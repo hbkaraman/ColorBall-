@@ -11,6 +11,8 @@ public class ObjectManager : MonoSingleton<ObjectManager>
     [Header("Position Variables")]
     [SerializeField] Vector3 nextPosition = Vector3.zero;
     [SerializeField] Vector3 stepVector = new Vector3(0,0,5);
+    [SerializeField] GameObject GameEndPrefab;
+    GameObject GameEnd;
 
     #endregion
 
@@ -18,6 +20,9 @@ public class ObjectManager : MonoSingleton<ObjectManager>
     private void Awake()
     {
         objectPoolManager = ObjectPoolManager.Instance;
+
+        GameEnd = Instantiate(GameEndPrefab);
+        GameEnd.SetActive(false);
 
         nextPosition = stepVector;
     }
@@ -36,6 +41,8 @@ public class ObjectManager : MonoSingleton<ObjectManager>
             objectPoolManager.spawnObject(randomType, nextPosition);
             nextPosition += stepVector;
         }
+        GameEnd.transform.position = nextPosition;
+        GameEnd.SetActive(true);
     }
     #endregion
 }

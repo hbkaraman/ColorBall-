@@ -310,8 +310,8 @@ GameObject:
   - component: {fileID: 943339776}
   - component: {fileID: 943339775}
   - component: {fileID: 943339774}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 8
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: de8f1df6aef5f2e419328e7a6b88df93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,6 +437,8 @@ MonoBehaviour:
   randomTypeValueLowerLimit: 0
   nextPosition: {x: 0, y: 0, z: 0}
   stepVector: {x: 0, y: 0, z: 10}
+  GameEndPrefab: {fileID: 2658093791997435573, guid: ccc75a6bb7281bd4fb31a314bc88fb9c,
+    type: 3}
 --- !u!1 &1368107268
 GameObject:
   m_ObjectHideFlags: 0
