@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
+using Cinemachine.Utility;
+using UnityEditor;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoSingleton<Player>
 {
-    public float speed;
+    public float forwardSpeed;
     private Rigidbody _rb;
-    public Vector3 target;
+    private Transform target;
     private bool isMoving;
-
-    // Start is called before the first frame update
+    private bool isLevelEnd;
+   
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -26,31 +28,43 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isMoving);
         MovementController();
     }
-
     private void MovementController()
     {
+
         if (Input.GetMouseButton(0))
         {
             isMoving = true;
-            target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x , 0.7f, Input.mousePosition.z / Screen.width));
-            Debug.Log(target);
 
         }
         else if (Input.GetMouseButtonUp(0))
         {
             isMoving = false;
         }
-        
-    }
 
+        if (isLevelEnd)
+        {
+            forwardSpeed -= Time.deltaTime * 100;
+            if (forwardSpeed <= 0)
+            {
+                forwardSpeed = 0;
+            }
+        }
+
+    }
     private void AddForceMovement()
     {
-        if (isMoving)
+        _rb.velocity = Vector3.forward * forwardSpeed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "GameEnd")
         {
-            _rb.MovePosition(target * speed * Time.deltaTime);
+            UIManager.Instance.ShowLevelCompletePanel();
+            ParticleManager.Instance.LevelEndEffects();
+            isLevelEnd = true;
         }
     }
 }
