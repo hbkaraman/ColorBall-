@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 
 public class doubletap : MonoBehaviour
@@ -16,12 +17,20 @@ public class doubletap : MonoBehaviour
     [SerializeField] float speed = 10;
      bool moving = false;
     public LayerMask ground;
+    public float yDegeri;
+    [SerializeField] Image image;
+    MeshRenderer rend;
 
+    private void Start()
+    {
+        rend = GetComponent<MeshRenderer>();
+        currentColorIndex =0;
+        rend.material.SetColor("_Color", colorList[currentColorIndex]);
+        image.color = colorList[currentColorIndex + 1];
+    }
     // Update is called once per frame
     void Update()
     {
-        MeshRenderer rend = GetComponent<MeshRenderer>();
-
         //double tap 
         bool doubleTapD = false;
 
@@ -31,26 +40,35 @@ public class doubletap : MonoBehaviour
             SetTargetPosition();
         }
         Move();
+
         if (Input.GetMouseButtonDown(0))
         {
             if (Time.time < _doubleTapTimeD + .3f)
             {
                 doubleTapD = true;
                 Debug.Log("double tab oldu");
-                //dizideki elemana gore sırasıyla renkler değişsin
-                rend.material.SetColor("_Color", colorList[currentColorIndex]);
+                
                 //daha sonra currentcolorindex değeri bir artsın ve diğer elemana geçsin
+                if (currentColorIndex + 1 == 5)
+                {
+                    image.color = colorList[0];
+                }
+                else
+                {
+                    image.color = colorList[currentColorIndex + 1];
+                }
+                rend.material.SetColor("_Color", colorList[currentColorIndex]);
                 currentColorIndex++;
             }
+
             _doubleTapTimeD = Time.time;
             //listenin son elemanına gelince currencolorindex' in değeri 0 olsun
+
             if (currentColorIndex == 5)
             {
                 currentColorIndex = 0;
             }
         }
-        
-        
         #endregion
     }
 
@@ -61,8 +79,7 @@ public class doubletap : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, 1000, ground))
         {
-           targetPosition = new Vector3(hit.point.x,0.5f,hit.point.z);
-          //  this.transform.LookAt(targetPosition);
+           targetPosition = new Vector3(hit.point.x,yDegeri,hit.point.z);
            lookAtTarget = new Vector3(targetPosition.x - transform.position.x,
                                        transform.position.y,
                                        targetPosition.z - transform.position.z);
@@ -72,7 +89,6 @@ public class doubletap : MonoBehaviour
 
     void Move()
     {
-
         transform.position = Vector3.MoveTowards(transform.position,
                                                  targetPosition,
                                                  speed * Time.deltaTime);
