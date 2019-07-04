@@ -20,7 +20,7 @@ public class StageManager : MonoSingleton<StageManager>
 
     private void Start()
     {
-        currentLevel = 2;
+        currentLevel = 1;
         setLevel(currentLevel);
     }
 
@@ -33,7 +33,7 @@ public class StageManager : MonoSingleton<StageManager>
         objectManager.spawnObjects(length);
     }
 
-    public void levelUp()
+    public void levelUp(Vector3 position)
     {
 
     }
