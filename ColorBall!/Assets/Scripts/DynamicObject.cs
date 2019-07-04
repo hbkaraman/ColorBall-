@@ -19,7 +19,6 @@ public class DynamicObject : MonoBehaviour
     {
         defaultPosition = transform.position;
         defaultRotation = transform.rotation;
-
     }
 
     public void reset()

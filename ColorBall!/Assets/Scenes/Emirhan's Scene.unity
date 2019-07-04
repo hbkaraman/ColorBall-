@@ -236,7 +236,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: -1.5340762e+24, z: 4.12e-43, w: -1.2567513e+24}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -383,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943339773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 137}
+  m_LocalPosition: {x: 0, y: -0.75, z: 137}
   m_LocalScale: {x: 10, y: 0.2, z: 1500}
   m_Children: []
   m_Father: {fileID: 0}
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e54ce17d41867e43aef529e74b8b753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomTypeValueUpperLimit: 3
+  randomTypeValueUpperLimit: 10
   randomTypeValueLowerLimit: 0
   nextPosition: {x: 0, y: 0, z: 0}
   stepVector: {x: 0, y: 0, z: 10}
@@ -611,6 +611,34 @@ MonoBehaviour:
   - objectType: 2
     length: 15
     objectPrefab: {fileID: 1177363986258435866, guid: 0b90fd735498d844882e8a1bcce5643f,
+      type: 3}
+  - objectType: 3
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: 5aecdfa028f530e49b0c7f1e8d8b251d,
+      type: 3}
+  - objectType: 4
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: 94ab97691b39fff4a959ac3282e2fc3c,
+      type: 3}
+  - objectType: 5
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: 6f3913de9c866a243b11920500a0668c,
+      type: 3}
+  - objectType: 6
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: 587aea45ef410db43ad17d94b9d415bc,
+      type: 3}
+  - objectType: 7
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: e18efb809103c0b49b8b6833403c1b78,
+      type: 3}
+  - objectType: 8
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: c87fd3f6e0dc99d45a3c1f1dddb1162a,
+      type: 3}
+  - objectType: 9
+    length: 15
+    objectPrefab: {fileID: 1177363986258435866, guid: a28a39490c199124c81eb65c2fde7b78,
       type: 3}
 --- !u!1 &1910990777
 GameObject:
