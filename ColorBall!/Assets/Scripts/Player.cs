@@ -31,6 +31,7 @@ public class Player : MonoSingleton<Player>
     public bool isDead;
     [SerializeField] Image image;
     public LayerMask ground;
+    StageManager stageManager;
    
     void Start()
     {
@@ -38,7 +39,7 @@ public class Player : MonoSingleton<Player>
         currentColorIndex = 0;
         image.color = colorList[1];
         rend.material.SetColor("_Color", colorList[currentColorIndex]);
-        
+        stageManager = StageManager.Instance;
     }
 
 
@@ -65,6 +66,9 @@ public class Player : MonoSingleton<Player>
         if (isDead)
         {
             rend.gameObject.SetActive(false);
+            restart();
+            isDead = false;
+
         }
        
         //double tap 
@@ -134,6 +138,12 @@ public class Player : MonoSingleton<Player>
             {
                 forwardSpeed = 0;
             }
+            if (Input.GetMouseButtonDown(0))
+            {
+                isLevelEnd = false;
+                restart();
+                stageManager.levelUp();
+            }
         }
     }
     
@@ -155,7 +165,7 @@ public class Player : MonoSingleton<Player>
 
         if(Physics.Raycast(ray, out hit, 1000, ground))
         {
-            targetPosition = new Vector3(hit.point.x,0.5f,hit.point.z);
+            targetPosition = new Vector3(hit.point.x,0,hit.point.z);
             //  this.transform.LookAt(targetPosition);
             lookAtTarget = new Vector3(targetPosition.x - transform.position.x,
                 transform.position.y,
@@ -177,6 +187,14 @@ public class Player : MonoSingleton<Player>
             StartCoroutine(ParticleManager.Instance.LevelEndEffects());
             isLevelEnd = true;
         }
+    }
+
+    void restart()
+    {
+        transform.position = Vector3.zero;
+        CameraFollowTarget.transform.position = new Vector3(0, 9.35f, -14.63f);
+        UIManager.Instance.HideLevelCompletePanel();
+        rend.gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision other)
